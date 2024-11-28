@@ -38,21 +38,34 @@ const App = () => {
     });
   };
 
-  const downloadAvatar = () => {
+  const downloadAvatar = async () => {
     const svgElement = document.getElementById("avatar-canvas");
     if (svgElement) {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
       const svgData = new XMLSerializer().serializeToString(svgElement);
-      const canvgInstance = Canvg.from(ctx, svgData);
-      canvgInstance.render().then(() => {
+
+      try {
+        const canvgInstance = await Canvg.from(ctx, svgData);  // Ensure Canvg is correctly initialized
+        await canvgInstance.render(); // Use render() instead of renderOnce()
+
         canvas.toBlob((blob) => saveAs(blob, "avatar.png"));
-      });
+      } catch (error) {
+        console.error("Error rendering SVG:", error);
+        alert("Failed to download avatar. Please try again.");
+      }
     }
   };
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  const customizationOptions = [
+    { key: "faceShape", options: ["round", "oval", "square"] },
+    { key: "hairstyle", options: ["short", "bald", "curly"] },
+    { key: "clothing", options: ["tshirt", "hoodie", "suit"] },
+    { key: "accessory", options: ["none", "glasses", "hat"] },
+  ];
 
   return (
     <div
@@ -82,7 +95,7 @@ const App = () => {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 max-w-sm w-full">
           <h2 className="text-2xl font-bold mb-6 text-center">Customize Your Avatar</h2>
           <div className="space-y-4">
-            {["faceShape", "hairstyle", "clothing", "accessory"].map((key) => (
+            {customizationOptions.map(({ key, options }) => (
               <div key={key}>
                 <label className="block text-sm font-medium capitalize">{key}:</label>
                 <select
@@ -90,10 +103,11 @@ const App = () => {
                   onChange={(e) => handleCustomizationChange(key, e.target.value)}
                   className="w-full mt-1 rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 p-2 focus:ring-2 focus:ring-blue-500 transition duration-200"
                 >
-                  {key === "faceShape" && ["round", "oval", "square"].map((option) => <option key={option}>{option}</option>)}
-                  {key === "hairstyle" && ["short", "bald", "curly"].map((option) => <option key={option}>{option}</option>)}
-                  {key === "clothing" && ["tshirt", "hoodie", "suit"].map((option) => <option key={option}>{option}</option>)}
-                  {key === "accessory" && ["none", "glasses", "hat"].map((option) => <option key={option}>{option}</option>)}
+                  {options.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
                 </select>
               </div>
             ))}
@@ -116,15 +130,12 @@ const App = () => {
           <div className="bg-white dark:bg-gray-800 p-8 rounded-lg w-96 max-w-full shadow-xl">
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100">About Us</h2>
             <p className="mt-4 text-lg text-gray-700 dark:text-gray-400">
-              This Avatar Creator was developed by Pranjal, a passionate developer who loves building cool and
+              This Avatar Creator Prototype is developed by Pranjal, a passionate developer who loves building cool and
               interactive web applications. The project is designed to offer a fun and personalized experience for
               users to create avatars with unique customization options.
             </p>
             <p className="mt-2 text-md text-gray-600 dark:text-gray-300">
-            ©.2024.Pranjal.All Rights Reserved.
-              <a href="https://your-portfolio-link.com" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
-                [Your Portfolio]
-              </a>.
+            © 2024 Pranjal. All Rights Reserved.
             </p>
             <div className="mt-6 flex justify-center">
               <button

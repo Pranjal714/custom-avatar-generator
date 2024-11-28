@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" width="100" height="50">
+  <g fill="none" stroke="black" stroke-width="2">
+    <!-- Hat Brim -->
+    <rect x="15" y="35" width="70" height="10" fill="#333"/>
+    
+    <!-- Hat Top -->
+    <path d="M25,35 Q50,10 75,35" fill="#333"/>
+  </g>
+</svg>

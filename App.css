@@ -2,8 +2,10 @@
 body {
   transition: background-color 0.3s ease, color 0.3s ease;
   cursor: url('path_to_cursor_image.png'), auto; /* Optional: Custom cursor */
+  font-family: 'Roboto', sans-serif; /* Add a clean sans-serif font for better readability */
 }
 
+/* Headings */
 h1 {
   transition: text-shadow 0.3s ease;
 }
@@ -12,8 +14,9 @@ h1:hover {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
+/* Dark Mode Styles */
 .dark {
-  background-color: #2c3e50;
+  background-color: #2c3e50; /* Slightly darker shade for better contrast */
   color: #ecf0f1;
 }
 
@@ -24,7 +27,7 @@ h1:hover {
 
 #avatar-canvas:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* Slightly more prominent shadow on hover */
 }
 
 /* Customization Panel */
@@ -38,36 +41,42 @@ h1:hover {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
+  border-radius: 4px; /* Added rounded corners for a cleaner look */
+  background-color: #f4f4f4; /* Light background to contrast with white theme */
+  border: 1px solid #ccc; /* Subtle border */
   transition: background-color 0.3s ease, border 0.3s ease;
 }
 
+/* Focus on select and input */
 .customization-options select:focus,
 .customization-options input:focus {
   border-color: #3498db;
+  background-color: #e6f7ff; /* Light blue background when focused for better visibility */
   outline: none;
+  box-shadow: 0 0 4px rgba(52, 152, 219, 0.6); /* Subtle shadow for focus */
 }
 
 /* Button Hover Effects */
 button {
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 4px; /* Rounded corners for buttons */
 }
 
 button:hover {
   background-color: #2980b9;
   transform: scale(1.05);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
 button:focus {
   outline: none;
+  box-shadow: 0 0 6px rgba(52, 152, 219, 0.6); /* Highlight button on focus */
 }
 
-/* Button Glow on Hover */
-button:hover {
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-}
-
+/* Button Active State */
 .buttons button:active {
   transform: scale(0.98);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15); /* Slightly reduced shadow when active */
 }
 
 /* Avatar Fade-in Effect */
@@ -90,16 +99,54 @@ button:hover {
   background-color: #34495e;
 }
 
+/* Sun/Moon Button for Theme Toggle */
 button.sun-moon {
   transition: background-color 0.3s ease;
+  border: 1px solid #ccc; /* Add a subtle border */
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #fff;
 }
 
-/* Footer section */
+button.sun-moon:hover {
+  background-color: #f39c12;
+  transform: scale(1.05);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Highlight on hover */
+}
+
+/* Footer Section */
 footer button {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 footer button:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Dropdown Styling for White Theme */
+.customization-options select {
+  border: 1px solid #ccc; /* Light border color for dropdown in white theme */
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover effect for select dropdown in white theme */
+.customization-options select:hover {
+  border-color: #3498db; /* Highlight border color on hover */
+}
+
+/* Focus effect for select dropdown in white theme */
+.customization-options select:focus {
+  border-color: #3498db;  /* Focused border color */
+  background-color: #e6f7ff;  /* Light blue background on focus */
+  box-shadow: 0 0 4px rgba(52, 152, 219, 0.6); /* Focus shadow */
+}
+
+/* Hover effect for dropdown options */
+.customization-options select option:hover {
+  background-color: #f1f1f1;
 }

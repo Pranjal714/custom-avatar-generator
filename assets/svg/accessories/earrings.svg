@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <g fill="none" stroke="black" stroke-width="2">
+    <!-- Left Earring -->
+    <circle cx="30" cy="50" r="5" fill="gold"/>
+    <line x1="30" y1="55" x2="30" y2="65" stroke="gold" stroke-width="2"/>
+    
+    <!-- Right Earring -->
+    <circle cx="70" cy="50" r="5" fill="gold"/>
+    <line x1="70" y1="55" x2="70" y2="65" stroke="gold" stroke-width="2"/>
+  </g>
+</svg>
